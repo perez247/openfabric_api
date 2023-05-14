@@ -22,8 +22,6 @@ config = require(__dirname + '/../config/config.json')[env];
   }
 }
 
-console.log(config);
-
 const db = {};
 
 let sequelize;
