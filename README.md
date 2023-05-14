@@ -1,32 +1,17 @@
-# API
+# Backend with Express
 
-Application written in Nodejs (Express) and deployment made possible using docker
+This is the backend that handles the RESTful API and performs the CRUD operations on the products items stored in the database
 
-## Deployment process
 
-### Create the docker images and send to dockerhub via Github actions
+# Database
 
-### Use the desired Cloud provider (AWS, GCH, Digital Ocean)
-#### In this case I am using a simple deployment so I am using GCH VM to run docker compose on it
+Postgres was used for the database and Sequelize was used as the ORM and for Migrations. The Postgres is running on a docker container. 
 
-<!-- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Deployment
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->
+The deployment was handled using the following:
+- **Docker**: Docker was used to build images to create container instances. Using GitHub actions, on pull request each image will be created and pushed to DockerHub (This was my choice for the registry because it was free). Images included the fr. 
+-- **Frontend**: The Angular application.
+-- **Backend**: The Express Server
+-- **Proxy**: An Nginx server that acts as proxy and performs some changes to the header/routes before passing to the right path; either the frontend or the backend
+- **Google Cloud Hosting**: For simplicity, a single VM instance was created and used on Google cloud hosting. Here docker was installed and docker compose was run on a docker-compose.yaml file (Multi-container architechure) which contains the configuration for the **Frontend**, **Backend**, **Proxy**, and **Progres**.
