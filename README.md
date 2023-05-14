@@ -1,32 +1,61 @@
-# API
+## Solution - Backend with Express
 
-Application written in Nodejs (Express) and deployment made possible using docker
+This is the backend that handles the RESTful API and performs the CRUD operations on the products items stored in the database
 
-## Deployment process
+## Database
 
-### Create the docker images and send to dockerhub via Github actions
+Postgres was used for the database and Sequelize was used as the ORM and for Migrations. The Postgres is running on a docker container. 
 
-### Use the desired Cloud provider (AWS, GCH, Digital Ocean)
-#### In this case I am using a simple deployment so I am using GCH VM to run docker compose on it
+## Deployment
 
-<!-- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The deployment was handled using the following:
+- **Docker**: Docker was used to build images to create container instances. Using GitHub actions, on pull request each image will be created and pushed to DockerHub (This was my choice for the registry because it was free). Images included the fr. 
+-- **Frontend**: The Angular application.
+-- **Backend**: The Express Server
+-- **Proxy**: An Nginx server that acts as proxy and performs some changes to the header/routes before passing to the right path; either the frontend or the backend
+- **Google Cloud Hosting**: For simplicity, a single VM instance was created and used on Google cloud hosting. Here docker was installed and docker compose was run on a docker-compose.yaml file (Multi-container architechure) which contains the configuration for the **Frontend**, **Backend**, **Proxy**, and **Progres**.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Question Part 2: Back-end (Node.js/Express)
 
-## Build
+## 2.1 Create a simple API
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Objective**: Evaluate the candidate's experience with Node.js and Express.
+**Task**: Develop a RESTful API with Express that supports CRUD operations for the product list.
 
-## Running unit tests
+## 2.2 Middleware and Authentication
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Objective**: Test the candidate's understanding of middleware and authentication in Express.
+**Task**: Implement JWT-based authentication for the API and protect specific routes.
 
-## Running end-to-end tests
+# Part 3: Database
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 3.1 Data modeling and CRUD operations
 
-## Further help
+**Objective**: Assess the candidate's ability to work with databases.
+**Task**: Choose a database (e.g., MongoDB, PostgreSQL, MySQL), design a schema for the product list, and implement CRUD
+operations.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->
+## 3.2 Data validation
+
+**Objective**: Test the candidate's ability to validate data at the database level.
+**Task**: Add server-side validation for product details and handle errors appropriately.
+
+# Part 4: Integration
+
+## 4.1 Connect front-end and back-end
+
+**Objective**: Evaluate the candidate's ability to integrate the Angular application with the back-end API.
+
+**Task**: Connect the Angular application with the Express API to create a full-stack application.
+
+## 4.2 Deployment
+
+**Objective**: Test the candidate's knowledge of deploying a full-stack Angular application.
+Task: Provide instructions or deploy the full-stack application to a platform like Heroku, AWS, or Google Cloud
+Platform.
+
+This test will provide a comprehensive assessment of an Angular Full Stack Developer's skills, covering various aspects
+of front-end and back-end development, as well as database and deployment knowledge.
+
