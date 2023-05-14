@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "product_user",
+    "password": "product_password",
+    "database": "product_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": "5434"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "product_user",
+    "password": "product_password",
+    "database": "product_db",
+    "host": "product_db_image",
+    "dialect": "postgres",
+    "port": "5432"
+  }
+}

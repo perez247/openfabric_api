@@ -1,0 +1,61 @@
+version: "3.8"
+  
+networks: 
+  product_network:
+volumes: 
+  product_db_volume:
+
+services:
+
+  product_db_image:
+    image: postgres:14-alpine
+    ports:
+      - "5432"
+    networks: 
+      - product_network
+    environment: 
+      - POSTGRES_USER=product_user
+      - POSTGRES_PASSWORD=product_password
+      - POSTGRES_DB=product_db
+    volumes:
+      - product_db_volume:/var/postgresql/data
+
+  product_api:
+    image: perez247/product_api
+    restart: always
+    ports:
+      - "9000"
+    depends_on: 
+      - product_db_image
+    networks: 
+      - product_network
+    environment:
+      - PORT=9000
+      - NODE_ENV=production
+      - TOKEN_KEY=thisismenttobeasecuredtokenkey
+      - DB_NAME=product_db
+      - DB_USER=product_user
+      - DB_PASSWORD=product_password
+      - DB_HOST=product_db_image
+      - DB_PORT=5432
+
+  product_web:
+    image: perez247/product_web
+    networks: 
+      - product_network
+    ports:
+      - "4200"
+    
+  product_proxy:
+    image: perez247/product_api
+    restart: always
+    networks: 
+      - product_network
+    ports:
+      - "80:80"
+    depends_on: 
+      - product_api
+      - product_db_image
+      - product_web
+
+
