@@ -6,7 +6,7 @@ const cors = require('cors')
 const connectDB = require('./config/connectDB');
 
 let app = express();
-// app.use(cors());
+app.use(cors({origin: false}));
 
 // config bady-parser to post data
 app.use(bodyParser.json());
