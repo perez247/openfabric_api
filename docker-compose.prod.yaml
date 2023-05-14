@@ -44,7 +44,7 @@ services:
     networks: 
       - product_network
     ports:
-      - "4200:4200"
+      - "4200"
     
   product_proxy:
     image: perez247/product_proxy
