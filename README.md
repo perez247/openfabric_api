@@ -4,6 +4,11 @@ Application written in Nodejs (Express) and deployment made possible using docke
 
 ## Deployment process
 
+### Create the docker images and send to dockerhub via Github actions
+
+### Use the desired Cloud provider (AWS, GCH, Digital Ocean)
+#### In this case I am using a simple deployment so I am using GCH VM to run docker compose on it
+
 <!-- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
