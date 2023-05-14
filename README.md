@@ -9,7 +9,7 @@ Postgres was used for the database and Sequelize was used as the ORM and for Mig
 ## Deployment
 
 The deployment was handled using the following:
-- **Docker**: Docker was used to build images to create container instances. Using GitHub actions, on pull request each image will be created and pushed to DockerHub (This was my choice for the registry because it was free). Images included the fr. 
+- **Docker**: Docker was used to build images to create container instances. Using GitHub actions, on pull request each image will be created and pushed to DockerHub (This was my choice for the registry because it was free). Images includs the following. 
 -- **Frontend**: The Angular application.
 -- **Backend**: The Express Server
 -- **Proxy**: An Nginx server that acts as proxy and performs some changes to the header/routes before passing to the right path; either the frontend or the backend
